@@ -1,0 +1,45 @@
+
+snippet     tabset
+options     word indent 
+alias tabset
+    tabset
+        tab(heading="${1:tab heading}"): ${2:TARGET}
+
+snippet     tab
+options     indent
+    tab(heading="${1:tab heading}"): ${2:TARGET}
+
+snippet     tabsetrepeat
+abbr        tabset
+options     indent
+    tabset
+        tab(ng-repeat="${4: ${5:tab\} in ${6:tabs\}}" heading="{{${1:tab.title}}}" active="${2:tab.active}" disabled="${3:tab.disabled}">
+            div {{${7:tab.content}}}
+
+snippet     navbar
+options     indent
+    .navbar${1:.navbar-default}${4:.navbar-fixed-top}.${2:class-title}-navbar(role='navigation')
+    .container
+        .navbar-header
+            button.navbar-toggle(ng-init="isCollapsed = true", ng-click="isCollapsed = !isCollapsed", type='button', data-toggle='collapse', data-target='.$2-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand ${3:brand-title}
+        nav.navbar-collapse.collapse.$2-collapse(ng-class!="!isCollapsed && 'in'")
+            ul.nav.navbar-nav.navbar-right
+                li: a.btn.fa.fa-plus link1
+                li: a.btn.fa.fa-plus link2
+                li.dropdown
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                        span.fa.fa-cog Options
+                        span.caret
+                    ul.dropdown-menu(role='menu')
+                        li
+                            span.btn.btn-default.fa.fa-plus 
+                            span Option 1
+                        li.divider
+                        li
+                            span.btn.btn-default.fa.fa-plus 
+                            span Option 2
